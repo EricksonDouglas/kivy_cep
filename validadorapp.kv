@@ -1,0 +1,58 @@
+#:import WipeTransition kivy.uix.screenmanager.WipeTransition
+
+ScreenManagement:
+  transition: WipeTransition()
+  Tela1:
+    id: menu
+  Tela2:
+    id: result
+
+
+<Tela1>:
+  name: 'menu'
+  FloatLayout:
+    Image:
+      source: "src/fundo.png"
+
+    FloatInput:
+      id: cep
+      font_size: '20'
+      pos_hint: {'center_x':.65, 'center_y':.1}
+      #size_hint: .64, .0867
+      background_color: (0,0,0,0)
+      multiline: False
+      input_filter: 'int'
+
+
+    Button:
+      pos_hint: {'center_x':.5, 'center_y':.38}
+      border: (0,0,0,0)
+      size_hint: None,None
+      size: 242,50
+      background_normal: 'src/botao_confirmar.png'
+      background_down: "src/botao_ok.png"
+      on_press: root.bt_validar()
+
+    Label:
+      id: lb_menu
+      pos_hint: {'center_x':.5, 'center_y':.1 }
+      font_size: "35"
+      color: 0.7, 0.3, 0.3, 1
+
+<Tela2>:
+  name: 'result'
+  FloatLayout:
+    Image:
+      source: 'src/fundo1.png'
+    Label:
+      id: lb_result
+      pos_hint: {'center_x':.5, 'center_y':.5}
+      bold: True
+    Button:
+      pos_hint: {'center_x':.9, 'center_y':.9}
+      border: 0,0,0,0
+      background_normal: "src/botao_voltar.png"
+      background_down: "src/botao_ok.png"
+      size_hint: None,None
+      size: 113,31
+      on_press: root.volta_tela()
