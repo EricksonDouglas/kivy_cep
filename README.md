@@ -1,10 +1,5 @@
 # **kivy_cep**
 
-**Sumário**
-
-[TOC]
-
-
 ## Preparando o ambiente
 
 ```sh
