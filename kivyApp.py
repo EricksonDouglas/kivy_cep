@@ -27,18 +27,18 @@ class Tela1(Screen):
         result = Validador.cep(self.ids["cep"].text)
         if result:
             if result["valido"] == 1:
-                self.manager.ids["result"].ids["lb_result"].text = "{} - É Valido".format(self.ids["cep"].text)
+                self.manager.ids["result"].ids["lb_result"].text = "{} É Valido".format(self.ids["cep"].text).center(20)
                 self.manager.ids["result"].ids["lb_result"].font_size = "50"
             else:
                 if len(result["repetitivo"])==1:
-                    text = "Não é valido\n{} é um digito repetitivo alternado em par".format(result["repetitivo"][0])
+                    text = "{} é um digito repetitivo alternado em par".format(result["repetitivo"][0])
                 elif len(result["repetitivo"])==2:
                     if result["repetitivo"][0] == result["repetitivo"][1]:
-                        text = "Não é valido\n{} é um digito repetitivo alternado em par".format(result["repetitivo"][0])
+                        text = "{} é um digito repetitivo alternado em par".format(result["repetitivo"][0])
                     else:
-                        text = "Não é valido\nos números {r[0]} e {r[1]} são digito repetitivo alternado em par".format(r=result["repetitivo"])
+                        text = "os números {r[0]} e {r[1]} são digito repetitivo alternado em par".format(r=result["repetitivo"])
 
-                self.manager.ids["result"].ids["lb_result"].text = "{} - {}".format(self.ids["cep"].text,text)
+                self.manager.ids["result"].ids["lb_result"].text = "[size=50][b]{}[/b][/size]\n{}".format(str(self.ids["cep"].text+"- Não é valido").center(100),text)
                 self.manager.ids["result"].ids["lb_result"].font_size = "15"
 
             self.manager.current = 'result'
