@@ -1,5 +1,8 @@
 import unittest
-from validador import Validador
+
+import sys
+sys.path.append("..")
+from libs.validador import Validador
 
 class TestCep(unittest.TestCase):
 
@@ -14,7 +17,7 @@ class TestCep(unittest.TestCase):
 
     def test_invalido(self):
         self.assertDictEqual(Validador.cep("121212"),{"valido":0,"repetitivo":[1,2]})
-        self.assertDictEqual(Validador.cep("234521"),{"valido":0,"repetitivo":[2]}) 
+        self.assertDictEqual(Validador.cep("234521"),{"valido":0,"repetitivo":[2]})
 
 
 if __name__ == "__main__": unittest.main()

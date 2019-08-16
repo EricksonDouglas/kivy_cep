@@ -4,7 +4,10 @@ from kivy.config import Config
 from kivy.uix.textinput import TextInput
 import re
 from kivy.uix.screenmanager import ScreenManager, Screen,FadeTransition
-from validador import Validador
+
+import sys
+sys.path.append("..")
+from libs.validador import Validador
 
 
 Window.size = (500, 300)

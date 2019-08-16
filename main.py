@@ -1,6 +1,6 @@
 import argparse
 from subprocess      import call
-from validador import Validador
+from  libs.validador import Validador
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-w", "--window", action="store_true",help="Executar interface")
@@ -12,11 +12,12 @@ parser.add_argument("-e", "--exportar",type=str,help="Exportar os resultados em 
 
 args = parser.parse_args()
 if args.window and args.test:
-    call("python3 tdd.py && python3 kivyApp.py",shell=True)
+    call("cd tests && python3 tdd.py && cd ../",shell=True)
+    call("cd interface && python3 kivyApp.py && cd ../",shell=True)
 elif args.test:
-    call("python3 tdd.py",shell=True)
+    call("cd tests && python3 tdd.py && cd ../" ,shell=True)
 elif args.window:
-    call("python3 kivyApp.py",shell=True)
+    call("cd interface && python3 kivyApp.py && cd ../",shell=True)
 elif args.cep:
     result = Validador.cep(args.cep)
     if result:
